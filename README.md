@@ -33,7 +33,7 @@ WanderLust/
 │── models/
 │── views/
 │── public/
-│── routes/
+│── init/
 │── utils/
 │── schema.js
 │── .gitignore
