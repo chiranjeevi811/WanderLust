@@ -88,8 +88,9 @@ footer.foot {
 
 .card-img-top {
   border-radius: 1rem !important;
-  width: 100% !important;
+  width: 120% !important;
   object-fit: cover !important;
+   height: 250px !important; 
 }
 
 .card-text{
@@ -97,6 +98,7 @@ footer.foot {
 }
 .listing-link{
     text-decoration: none;
+
 }
 .card-img-overlay{
     opacity: 0;
@@ -136,3 +138,13 @@ footer.foot {
     padding-left: 0;
     padding-right: 0;
 }
+
+
+.listing-price {
+  margin-top: 2px;      /* closer to title */
+}
+
+.listing-price {
+  margin-top: -35px;      /* closer to title */
+}
+
