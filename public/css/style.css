@@ -148,3 +148,10 @@ footer.foot {
   margin-top: -35px;      /* closer to title */
 }
 
+
+/* map */
+
+#map{
+    height: 600px;
+    width: 100%;
+}

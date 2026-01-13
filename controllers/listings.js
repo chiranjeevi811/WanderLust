@@ -1,4 +1,7 @@
 const Listing=require("../models/listing")
+const axios = require("axios");
+const mapToken = process.env.MAP_TOKEN;
+
 
 module.exports.index=async(req,res)=>{
   const listings = await Listing.find({});
@@ -32,6 +35,19 @@ module.exports.showListing=async(req,res)=>{
 }
 
 module.exports.createListing=async(req,res,next)=>{
+  const location = req.body.listing.location;
+
+let response = await axios.get(
+  `https://api.maptiler.com/geocoding/${encodeURIComponent(location)}.json`,
+  {
+    params: {
+      key: process.env.MAP_TOKEN,
+      limit: 1
+    }
+  }
+);
+
+
  
   let url = req.file.path;
 let filename = req.file.filename;
@@ -41,7 +57,12 @@ let filename = req.file.filename;
    const newlisting = new Listing(req.body.listing);
    newlisting.owner = req.user._id;
    newlisting.image = { url, filename };
+    newlisting.geometry=response.data.features[0].geometry;
+
+
+
    await newlisting.save();
+   console.log(newlisting);
 
     req.flash("success","New Listing Created!!");
    res.redirect("/listings");
